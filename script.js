@@ -26,6 +26,7 @@ class Game {
   score2 = document.querySelector("#circle-score >.score");
   firstRound = true;
 
+  // Fonction qui permet de lancer l'application sur la page d'accueil avec choix du type de jeu
   getApp() {
     this.friendButton.addEventListener("click", () => {
       this.player1 = new Player("X", true);
@@ -42,6 +43,7 @@ class Game {
     });
   }
 
+  // Fonction qui permet d'initialiser l'en tête de la grille de jeu
   getHeader = () => {
     this.home.style.display = "none";
     this.back.style.visibility = "visible";
@@ -56,6 +58,7 @@ class Game {
     }
   };
 
+  // Fonction qui permet de générer la grille de jeu en fonction du mode choisi
   setGame() {
     this.gameBoard.style.display = "flex";
     let score1 = 0;
@@ -184,6 +187,7 @@ class Game {
     });
   }
 
+  // Fonction qui permet de remettre la grille de jeu à 0
   resetBoardGame() {
     let cross = document.querySelectorAll("i.cross");
     let circle = document.querySelectorAll("i.circle");
@@ -239,6 +243,7 @@ class Game {
     this.container.removeAttribute("style");
   }
 
+  // Fonction qui permet de contrôler le score total d'un joueur basé sur un carré magique de 3 sur 3
   didPlayerWin(score) {
     for (let i = 0; i < score.length; i++) {
       for (let j = i + 1; j < score.length; j++) {
@@ -252,6 +257,7 @@ class Game {
     return false;
   }
 
+  // Fonction qui permet de véridier si la grille est jouable 
   canPlay(board) {
     for (let index = 0; index < 9; index++) {
       if (board[index] === undefined) {
@@ -261,6 +267,7 @@ class Game {
     return false;
   }
 
+  // Fonction qui permet à l'AI de définir le meilleur coup à jouer pour gagner la partie
   findBestMove(board, player1, player2) {
     let bestScore = -Infinity;
     let move = null;
@@ -299,6 +306,7 @@ class Game {
     return move;
   }
 
+  // Fonction qui permet à l'algorythme d'associer un score en fonction du coup joué par le joueur ou par l'ordinateur
   getWinnerScore() {
     if (this.didPlayerWin(this.scorePlayer1)) {
       return -1;
@@ -310,6 +318,7 @@ class Game {
     return null;
   }
 
+  // Fonction qui permet de de trouver le meilleur coup à jouer pour l'ordinateur basé sur le principe mathématique minimax
   minimax(copyBoard, isMaximizing, player1, player2) {
     let winnerScore = this.getWinnerScore();
     if (winnerScore !== null) {
@@ -347,6 +356,7 @@ class Game {
     return bestScore;
   }
 
+  // fonction qui permet d'afficher la modal de choix du joueur qui commence
   toggleModal = () => {
     if (this.modal.classList.contains("open")) {
       this.modal.classList.remove("open");
