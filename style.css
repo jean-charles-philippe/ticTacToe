@@ -1,0 +1,290 @@
+html {
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+*,
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: rgb(34, 32, 32);
+    position: relative;
+}
+
+body > * {
+    background-color: rgb(34, 32, 32);
+}
+
+button {
+    background-color: rgb(34, 32, 32);
+    color: rgb(184, 134, 35);
+    padding-block: 6px;
+    padding-inline: 32px;
+    border: 2px solid rgb(184, 134, 35);
+    border-radius: 5px;
+}
+button:hover {
+   scale: 1.1;
+}
+
+#multiplayer-or-computer{
+    display: flex;
+    gap: 20px;
+}
+
+#game-board > div:nth-child(1) {
+    display: flex;
+    justify-content: center;
+   }
+   
+
+#game-board{
+    height: 90%;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+#header {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    height: 20%;
+}
+
+#game-container{
+    flex: 1;
+}
+
+#header div:nth-child(1){
+    display: flex;
+    justify-content: space-around;
+    min-height: 60%;
+    align-items: center; 
+   
+}
+
+#home {
+    display: grid;
+    place-items: center;
+    position: relative;
+}
+
+#cross-gamer{
+  font-size: 4rem;
+    transition: all 1s ease;
+ color: darkgoldenrod;
+ position: relative;
+}
+
+#circle-gamer{
+    font-size: 3rem;
+    transition: all  1s ease;
+    color: aquamarine;
+    position: relative;
+  }
+
+
+.activ {
+    color:  rgb(228, 31, 74) !important;
+    filter: drop-shadow(0 0.5rem 0.8rem crimson);
+    transition: filter .5ms ease-in;
+}
+
+
+#container {
+    max-width: 500px;
+    min-width: 80%;
+    height: 100%;
+    margin: auto;
+    background-color: rgb(184, 134, 35);
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1%;
+
+}
+
+#cross-score, #circle-score {
+flex: 1;
+display: grid;
+place-items: center;
+}
+
+.score{
+    color: rgb(70, 68, 68);
+    font-size: 2rem;
+}
+
+.block{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(34, 32, 32);
+    display: grid;
+    place-items: center;
+    padding: 0;
+}
+
+.block:nth-child(1) {
+    display: flex;
+    justify-content: space-around;
+    align-items: center; 
+}
+
+.cross {
+    font-size: 5vmax;
+    color: darkgoldenrod;
+ 
+}
+
+.circle {
+    font-size: 3vmax;
+    color: aquamarine;
+}
+
+.vh {
+    visibility: hidden !important;
+}
+
+.dn {
+    display: none !important;
+}
+
+#cross-win {
+    position: absolute;
+    left: -163%;
+    bottom: 1%;
+    font-size: 1.3rem;
+    display: none;
+}
+
+#circle-win {
+    position: absolute;
+    left: 109%;
+    bottom: -7%;
+    font-size: 1.3rem;
+    display: none;
+}
+
+#crossHeader{
+    position: absolute;
+    font-size: 8rem;
+    color: rgba(184, 134, 35, 0.79);
+    top: -155px;
+}
+
+#circleHeader{
+    position: absolute;
+    font-size: 10rem;
+    color: rgba(184, 134, 35, 0.783);
+    top: -170px;
+}
+
+#back{
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-size: 1.8rem;
+}
+
+#back:hover{
+    color: rgba(184, 134, 35, 0.783);
+}
+
+.modal{
+    position: fixed;
+    top: 58%;
+    left: 50%;
+    translate: -50% -50%;
+    min-width: 430px;
+    width: 50%;
+    height: 150px;
+    padding: 48px 48px;
+    border-radius: 12px;
+    background: rgb(34, 32, 32);
+    color:aliceblue;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-background{
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: scale(1,1);
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background: rgb(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+}
+
+#modal div:nth-child(2) {
+    font-size: 3rem;
+}
+
+#modal  div:nth-child(3) {
+    font-size: 2.2rem;
+}
+
+#modal  div:nth-child(2):hover  {
+    color: rgba(184, 134, 35, 0.783);
+    scale: 1.1;
+}
+
+#modal div:nth-child(3):hover {
+    color: rgba(184, 134, 35, 0.783);
+    scale: 1.1;
+}
+
+div.modal-background.open {
+    opacity: 1;
+    visibility: visible;
+    animation: background-in 1s both;
+    z-index: 999;
+}
+
+div.modal.open{
+    opacity: 1;
+    visibility: visible;
+    animation: modal-in 1s both;
+    z-index: 9999;
+}
+
+div.modal.closed {
+    opacity: 0;
+    visibility: hidden;
+    translate: -50% -50%;
+}
+
+@keyframes background-in {
+    0% {scale: 0 0.005;}
+    33% {scale: 1 0.005;}
+    66%, 100% { scale: 1 1;}
+}
+
+@keyframes modal-in {
+    0%, 66% {
+        opacity: 0;
+        visibility: hidden;
+        translate: -50% -30%;
+    }
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}

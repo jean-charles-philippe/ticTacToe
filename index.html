@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/06324fc8e9.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Tic Tac Toe</title>
+  </head>
+  <body>
+    <div id="modal-background" class="modal-background"></div>
+    <div id="modal" class="modal">
+      <p>Qui commence ?</p>
+      <div id="activX">
+        <i  class="fa-solid fa-xmark"></i>
+      </div>
+      <div id="activO">
+        <i  class="fa-regular fa-circle"></i>
+      </div>
+    </div>
+    <div id="back" style="visibility: hidden">
+      <i class="fa-solid fa-house"></i>
+    </div>
+    <header id="home">
+      <i id="crossHeader" class="fa-solid fa-xmark"></i>
+      <i id="circleHeader" class="fa-regular fa-circle"></i>
+      <h1>Tic Tac Toe</h1>
+      <div id="multiplayer-or-computer">
+        <button id="vs-friend" class="button">Jouer contre un ami</button>
+        <button id="vs-computer" class="button">
+          Jouer contre l'ordinateur
+        </button>
+      </div>
+    </header>
+
+    <div id="game-board" style="display: none">
+      <div><button id="reset" class="button">Rejouer</button></div>
+      <div id="header">
+        <div>
+          <div id="cross-gamer" class="">
+            <i class="fa-solid fa-xmark"></i>
+            <p id="cross-win">Gagné</p>
+          </div>
+
+          <div id="cross-score"><span class="score">0</span></div>
+          <div id="circle-score"><span class="score">0</span></div>
+
+          <div id="circle-gamer" class="">
+            <i class="fa-regular fa-circle"></i>
+            <p id="circle-win">Gagné</p>
+          </div>
+        </div>
+      </div>
+      <div id="game-container">
+        <div id="container"></div>
+      </div>
+    </div>
+  </body>
+</html>
