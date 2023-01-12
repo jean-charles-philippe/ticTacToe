@@ -38,9 +38,13 @@ class Game {
       this.toggleModal();
     });
 
-    this.modalBackGround.addEventListener("click", () => {
-      this.toggleModal();
-    });
+    // this.modalBackGround.addEventListener("click", () => {
+    //   // this.toggleModal();
+    //   this.modal.classList.remove("open");
+    //   this.modalBackGround.classList.remove("open");
+    //   this.modal.classList.add("closed");
+    //   this.modalBackGround.classList.add("closed");
+    // });
   }
 
   // Fonction qui permet d'initialiser l'en tête de la grille de jeu
@@ -72,8 +76,8 @@ class Game {
       div.setAttribute("class", "block");
       div.setAttribute("data-index", index);
       div.innerHTML = `
-                    <i class="fa-solid fa-xmark cross vh"></i>
-                    <i class="fa-regular fa-circle circle vh"></i>`;
+                    <i class="fa-solid fa-xmark cross dn"></i>
+                    <i class="fa-regular fa-circle circle dn"></i>`;
       this.container.appendChild(div);
 
       const crossClass = div.getElementsByClassName(
@@ -86,7 +90,7 @@ class Game {
 
       div.addEventListener("click", (e) => {
         if (this.player1.active) {
-          crossClass.remove("vh");
+          crossClass.remove("dn");
           circleClass.add("dn");
 
           this.scorePlayer1.push(this.magicBoard[index]);
@@ -104,7 +108,7 @@ class Game {
           } else {
             this.divPlayer1Header.classList.remove("activ");
             this.divPlayer2Header.classList.add("activ");
-            this.divPlayer2Header.style.transform = "scale(1.2)";
+            this.divPlayer2Header.style.transform = "scale(1.1)";
             this.divPlayer1Header.style.transform = "scale(1)";
             this.player1.active = false;
             this.player2.active = true;
@@ -121,7 +125,7 @@ class Game {
 
               document
                 .querySelector(`div[data-index="${move}"]`)
-                .children[1].classList.remove("vh");
+                .children[1].classList.remove("dn");
               document
                 .querySelector(`div[data-index="${move}"]`)
                 .children[0].classList.add("dn");
@@ -142,7 +146,7 @@ class Game {
               } else {
                 this.divPlayer2Header.classList.remove("activ");
                 this.divPlayer1Header.classList.add("activ");
-                this.divPlayer1Header.style.transform = "scale(1.4)";
+                this.divPlayer1Header.style.transform = "scale(1.1)";
                 this.divPlayer2Header.style.transform = "scale(1)";
                 this.player2.active = false;
                 this.player1.active = true;
@@ -150,7 +154,7 @@ class Game {
             }
           }
         } else if (this.player2.active && !this.player2.computer) {
-          circleClass.remove("vh");
+          circleClass.remove("dn");
           crossClass.add("dn");
 
           this.scorePlayer2.push(this.magicBoard[index]);
@@ -169,7 +173,7 @@ class Game {
           } else {
             this.divPlayer2Header.classList.remove("activ");
             this.divPlayer1Header.classList.add("activ");
-            this.divPlayer1Header.style.transform = "scale(1.4)";
+            this.divPlayer1Header.style.transform = "scale(1.1)";
             this.divPlayer2Header.style.transform = "scale(1)";
             this.player2.active = false;
             this.player1.active = true;
@@ -197,12 +201,12 @@ class Game {
 
     for (const iterator of cross) {
       iterator.classList.remove("dn");
-      iterator.classList.add("vh");
+      iterator.classList.add("dn");
     }
 
     for (const iterator of circle) {
       iterator.classList.remove("dn");
-      iterator.classList.add("vh");
+      iterator.classList.add("dn");
     }
 
     this.board = [];
@@ -227,13 +231,12 @@ class Game {
         this.modalBackGround.classList.remove("closed");
         this.modal.classList.add("open");
         this.modalBackGround.classList.add("open");
-
       }
     }
 
     if (this.player2.computer === undefined) {
       this.divPlayer1Header.classList.add("activ");
-      this.divPlayer1Header.style.transform = "scale(1.4)";
+      this.divPlayer1Header.style.transform = "scale(1.1)";
     }
 
     for (const i of this.container.children) {
@@ -257,7 +260,7 @@ class Game {
     return false;
   }
 
-  // Fonction qui permet de véridier si la grille est jouable 
+  // Fonction qui permet de véridier si la grille est jouable
   canPlay(board) {
     for (let index = 0; index < 9; index++) {
       if (board[index] === undefined) {
@@ -395,7 +398,7 @@ class Game {
 
       document
         .querySelector(`div[data-index="${move}"]`)
-        .children[1].classList.remove("vh");
+        .children[1].classList.remove("dn");
       document
         .querySelector(`div[data-index="${move}"]`)
         .children[0].classList.add("dn");
@@ -415,7 +418,7 @@ class Game {
       } else {
         this.divPlayer2Header.classList.remove("activ");
         this.divPlayer1Header.classList.add("activ");
-        this.divPlayer1Header.style.transform = "scale(1.4)";
+        this.divPlayer1Header.style.transform = "scale(1.1)";
         this.divPlayer2Header.style.transform = "scale(1)";
         this.player2.active = false;
         this.player1.active = true;
